@@ -1,0 +1,415 @@
+/* FONTS */
+@font-face {
+  font-family: Soleil;
+  src: url(../resources/fonts/SoleilRegular.otf);
+}
+
+@font-face {
+  font-family: Soleil-Bold;
+  src: url(../resources/fonts/SoleilBold.otf);
+}
+
+/* TEXT */
+html {
+  margin-left: -8px;
+  padding: none;
+}
+
+h1 {
+  margin-top: 150px;
+  font-family: Soleil-Bold;
+  font-size: 50px;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 80px;
+  margin-bottom: 100px;
+  font-family: Soleil-Bold;
+  font-size: 35px;
+  text-align: center;
+}
+
+h3 {
+  font-family: Soleil-Bold;
+  font-size: 25px;
+}
+
+h4 {
+  margin-top: 10px;
+  font-family: Soleil-Bold;
+  font-size: 20px;
+}
+
+p {
+  font-family: Soleil;
+  font-size: 16px;
+}
+
+.info {
+  margin-top: -20px;
+  color: #858585;
+  font-size: 14px;
+}
+
+footer {
+  height: 100px;
+}
+
+/* HOME PAGE */
+
+form {
+  text-align: center;
+}
+
+.zip-code {
+  font-family: Soleil;
+  font-size: 16px;
+  padding: 12px 20px;
+  border-radius: 100px;
+  width: 150px;
+  border: 1px solid lightgray;
+  outline: none;
+  background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat right;
+  background-position: 150px 8px;
+  background-size: 24px;
+}
+
+.board {
+  padding: 30px 50px;
+  border: 1px solid #E5E5E5;
+  border-radius: 20px;
+}
+
+.home-split {
+  margin-top: 100px;
+  display: flex;
+  gap: 50px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ongoing-blazes {
+  width: 300px;
+  text-align: center;
+}
+
+.prepare-now {
+  width: 450px;
+  justify-content: center;
+  text-align: center;
+}
+
+.divider {
+  width: 45px;
+  height: 5px;
+  border-radius: 10px;
+  background: red;
+  margin: auto;
+}
+
+/* HEADER */
+#logo {
+  width: 150px;
+  padding: 15px;
+  margin-left: 20px;
+}
+
+/* PREPARE SECTION */
+.grid-container {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  display: grid;
+  gap: 15px 30px;
+  justify-items: center;
+}
+
+.grid-container a {
+  width: 200px;
+  text-decoration: none;
+  color: white;
+}
+
+.prepare-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 15px;
+  height: 70px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.prepare-item p {
+  padding-right: 12px;
+}
+
+.grid-container img {
+  padding-left: 15px;
+  width: 35px;
+  height: 35px;
+}
+
+.red {
+  background-color: #FA7A7A;
+}
+
+.orange {
+  background-color: #FF843F;
+}
+
+.yellow {
+  background-color: #FFD076;
+}
+
+.green {
+  background-color: #57D496;
+}
+
+.blue {
+  background-color: #71D8EF;
+}
+
+.coral {
+  background-color: #FF8964;
+}
+
+.purple {
+  background-color: #9368DF;
+}
+
+.magenta {
+  background-color: #DFA2F6;
+}
+
+/* DASHBOARD */
+.dashboard {
+  width: 70%;
+  margin: auto;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 200px;
+  grid-template-rows: 150px;
+  grid-gap: 40px;
+  grid-template-areas: "stats stats stats steps" "nearby nearby alerts steps";
+}
+
+.stats {
+  grid-area: stats;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
+}
+
+.nearby {
+  grid-area: nearby;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+}
+
+.next-steps {
+  margin-left: 100px;
+  grid-area: steps;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+  align-self: flex-start;
+}
+
+.alerts {
+  padding: 20px;
+  grid-area: alerts;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.mini-header {
+  font-family: Soleil;
+  font-size: 14px;
+  color: gray;
+  margin-top: 0px;
+}
+
+.stats-display {
+  font-family: Soleil-Bold;
+  font-size: 28px;
+  color: #3EC06A;
+  margin-top: -3px;
+}
+
+.stats-item {
+  margin: 0px;
+  height: 50px;
+  align-items: center;
+}
+
+.next-steps a {
+  width: 200px;
+  text-decoration: none;
+  color: white;
+}
+
+.next-steps img {
+  padding-left: 15px;
+  width: 35px;
+  height: 35px;
+}
+
+.email {
+  margin-top: 5px;
+  font-family: Soleil;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  width: 170px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.email-submit {
+  margin-top: 20px;
+  background-color: #319CFF;
+  color: white;
+  font-family: Soleil;
+  font-size: 16px;
+  padding: 12px 10px;
+  border-radius: 100px;
+  width: 150px;
+  border: none;
+  outline: none;
+}
+
+#bar {
+  height: 50px;
+  margin-top: 5px;
+  margin-right: -20px;
+}
+
+/* PREPARE PAGES */
+.title {
+  height: 250px;
+  width: 100vw;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title h2 {
+  color: white;
+}
+
+.info-content h4 {
+  text-align: center;
+}
+
+.info-content {
+  width: 50%;
+  margin: auto;
+  margin-top: 80px;
+  line-height: 1.4;
+}
+
+.checklist-content h4 {
+  text-align: center;
+}
+
+.checklist-content {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  gap: 50px;
+  flex-direction: row;
+}
+
+.checklist-content div {
+  font-family: Soleil;
+  font-size: 16px;
+  line-height: 1.4;
+  padding: 30px;
+  margin-top: 50px;
+  height: 100%;
+}
+
+.equal div {
+  width: 100%;
+}
+
+.singular div {
+  width: 70%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+ul, ol {
+  font-family: Soleil;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.pet {
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+}
