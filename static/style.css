@@ -413,3 +413,15 @@ ul, ol {
   margin: auto;
   justify-content: center;
 }
+
+.text-red {
+  color: #FA7A7A;
+}
+
+.text-orange {
+  color: #FF843F;
+}
+
+.text-green {
+  color: #3ec06a;
+}

@@ -9,15 +9,16 @@
     <img id="bar" src="../static/resources/images/bar.png"/>
     <div class="stats-item status">
       <p class="mini-header">WILDFIRE STATUS</p>
-      <p class="stats-display">Low risk</p>
+      <p class="stats-display {{ statusColor }}">{{ status }}</p>
     </div>
     <div class="stats-item ozone">
       <p class="mini-header">OZONE LEVELS</p>
-      <p class="stats-display">Good</p>
+
+      <p class="stats-display {{ ozoneColor }}">{{ ozone }}</p>
     </div>
     <div class="stats-item pm">
       <p class="mini-header">PARTICULATE MATTER</p>
-      <p class="stats-display">Moderate</p>
+      <p class="stats-display {{ pmColor }}">{{ pm }}</p>
     </div>
   </div>
 
@@ -37,24 +38,60 @@
   <div class="next-steps">
     <h4 style="margin-top: -20px;">My next steps</h4>
     <p class="info" style="margin-top: -30px;">Suggestions for you</p>
-    <a href="/emergency-kit">
-      <div class="prepare-item red">
-        <img src="../static/resources/images/supply-kit.png"/>
-        <p>Build an emergency kit</p>
-      </div>
-    </a>
-    <a href="/emergency-kit">
-      <div class="prepare-item orange">
-        <img src="../static/resources/images/emergency-plan.png"/>
-        <p>Make an emergency plan</p>
-      </div>
-    </a>
-    <a href="/emergency-kit">
+    {% if status == "Low risk" %}
+      <a href="/emergency-kit">
+        <div class="prepare-item red">
+          <img src="../static/resources/images/supply-kit.png"/>
+          <p>Build an emergency kit</p>
+        </div>
+      </a>
+      <a href="/emergency-plan">
+        <div class="prepare-item orange">
+          <img src="../static/resources/images/emergency-plan.png"/>
+          <p>Make an emergency plan</p>
+        </div>
+      </a>
+    {% endif %}
+    {% if status == "Moderate risk" %}
+    <a href="/agriculture">
       <div class="prepare-item green">
         <img src="../static/resources/images/agriculture.png"/>
         <p>Protect agriculture</p>
       </div>
     </a>
+    <a href="/child-safety">
+      <div class="prepare-item yellow">
+        <img src="../static/resources/images/child-safety.png"/>
+        <p>Keep children safe</p>
+      </div>
+    </a>
+    <a href="/pet-safety">
+      <div class="prepare-item coral">
+        <img src="../static/resources/images/pet-safety.png"/>
+        <p>Keep pets safe</p>
+      </div>
+    </a>
+    {% endif %}
+    {% if status == "High risk" %}
+    <a href="/prepare-for-evacuation">
+      <div class="prepare-item blue">
+        <img src="../static/resources/images/prepare-evacuation.png"/>
+        <p>Prepare to evacuate</p>
+      </div>
+    </a>
+    <a href="/evacuation">
+      <div class="prepare-item purple">
+        <img src="../static/resources/images/evacuation.png"/>
+        <p>Learn how to evacuate</p>
+      </div>
+    </a>
+    <a href="/returning-home">
+      <div class="prepare-item magenta">
+        <img src="../static/resources/images/returning-home.png"/>
+        <p>Plan for returning home</p>
+      </div>
+    </a>
+    {% endif %}
   </div>
 
 </div>

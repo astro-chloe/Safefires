@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import requests, json, xmltodict
+import requests, json, xmltodict, pickle
 
 app = Flask(
 	__name__,
@@ -96,7 +96,68 @@ def location():
         
   nearbyWildfires = sorted(nearbyWildfires, key = lambda x:x[-2])
 
-  return render_template("location.html", address=trimmedFormattedAddress, wildfires=nearbyWildfires)
+  latLongRequest = requests.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD2ZWo9VogormcvsIxF3U8e0yCB84O0p8c&components=postal_code:94010")
+  latLongData = latLongRequest.json()
+  lat = latLongData["results"][0]["geometry"]["location"]["lat"]
+  long = latLongData["results"][0]["geometry"]["location"]["lng"]
+
+  aqiRequest = requests.get("http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=" + str(lat) + "&lon=" + str(long) + "&appid=cca337204f411e7b74e77b4aa7d29613")
+  aqiData = aqiRequest.json()
+  ozoneLevel = aqiData["list"][1]["components"]["o3"]
+  ozoneLevelRelative = ""
+  ozoneLevelColor = ""
+
+  if ozoneLevel < 120:
+    ozoneLevelRelative = "Good"
+    ozoneLevelColor = "text-green"
+  elif ozoneLevel < 180:
+    ozoneLevelRelative = "Moderate"
+    ozoneLevelColor = "text-orange"
+  else:
+    ozoneLevelRelative = "Poor"
+    ozoneLevelColor = "text-red"
+
+  pmLevel = aqiData["list"][1]["components"]["pm10"]
+  pmLevelRelative = ""
+  pmLevelColor = ""
+
+  if pmLevel < 30:
+    pmLevelRelative = "Good"
+    pmLevelColor = "text-green"
+  elif pmLevel < 55:
+    pmLevelRelative = "Moderate"
+    pmLevelColor = "text-orange"
+  else:
+    pmLevelRelative = "Poor"
+    pmLevelColor = "text-red"
+
+  weatherRequest = requests.get("https://api.openweathermap.org/data/2.5/weather?lat=50&lon=50&appid=cca337204f411e7b74e77b4aa7d29613")
+  weatherData = weatherRequest.json()
+
+  temp = weatherData["main"]["temp"] - 273.15
+  humidity = weatherData["main"]["humidity"]
+  wind = weatherData["wind"]["speed"]
+  isRaining = weatherData["weather"][0]["main"]
+  rain = 0
+  if isRaining:
+    rain = 0.2
+
+  model = pickle.load(open('static/model.pkl','rb'))
+  areaPrediction = model.predict([[temp, humidity, wind, rain]])
+  predictedStatus = ""
+  predictedStatusColor = ""
+
+  if areaPrediction < 5:
+    predictedStatus = "Low risk"
+    predictedStatusColor = "text-green"
+  elif areaPrediction < 20:
+    predictedStatus = "Moderate risk"
+    predictedStatusColor = "text-orange"
+  else:
+    predictedStatus = "High risk"
+    predictedStatusColor = "text-red"
+
+  return render_template("location.html", address=trimmedFormattedAddress, wildfires=nearbyWildfires, status=predictedStatus, statusColor=predictedStatusColor, ozone=ozoneLevelRelative, ozoneColor=ozoneLevelColor, pm=pmLevelRelative, pmColor=pmLevelColor)
 
 @app.route("/emergency-kit")
 def emergencyKit():
